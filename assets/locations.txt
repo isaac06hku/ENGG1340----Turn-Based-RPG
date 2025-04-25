@@ -1,0 +1,6 @@
+/[Name]|[Description]|[Connections (reachable locations)]|assets/[txt file]|[has encounter]
+Forest|A dense woodland...|Village|assets/ascii_art/location_art/forest_art.txt|true
+Village|The silence is deafening...|Forest,Shop,Cave,Castle|assets/ascii_art/location_art/village_art.txt|true
+Shop|Pray you never learn just how good it can be to see another face...|Village|assets/ascii_art/location_art/shop_art.txt|true
+Cave|What lies in these dark depths?...|Village|assets/ascii_art/location_art/cave_art.txt|true
+Castle|A crumbling fortress...||assets/ascii_art/location_art/castle_art.txt|true
