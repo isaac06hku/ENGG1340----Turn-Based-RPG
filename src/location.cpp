@@ -63,7 +63,7 @@ bool LocationManager::load_locations(const std::string& filename) {
 
     }
 
-    return !locations.empty(); //Flase if no valid locations loaded
+    return !locations.empty(); //False if no valid locations loaded
 }
 
 bool LocationManager::validate_move(const std::string& target) const {
@@ -77,4 +77,8 @@ bool LocationManager::validate_move(const std::string& target) const {
 
 Location LocationManager::get_current_location() const noexcept {
     return current_location;
+}
+
+std::string LocationManager::get_current_location_name() const noexcept {
+    return current_location.name;
 }

@@ -22,6 +22,7 @@ struct Location{
 class LocationManager{
     private:
     std::vector<Location> locations; // All loaded Locations
+    std::vector<std::string> visited_locations; // Track visited locations for save file
 
     Location current_location; // Player's current location
 
@@ -40,10 +41,14 @@ class LocationManager{
     */
     bool load_locations(const std::string& filename);
 
+    std::string get_current_location_name() const noexcept; // Get location name for save/load
+
+
     /*
      * @brief Gets the player's current location (noexcept guaranteed).
     */
     Location get_current_location() const noexcept;
+
 };
 
 #endif 
