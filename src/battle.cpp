@@ -80,7 +80,7 @@ bool battle(character_statue player, character_statue enemy){
 		cout << "-enemy launched an attack, deal " << damage << "to you" << endl;
 		current_health_player -= damage;
 		if (current_health_player <= 0) {
-			cout << "you loose" << endl;
+			cout << "you lose" << endl;
 			return false;
 		}
 	}
