@@ -2,7 +2,7 @@
 
 # Team members:
 - Luan Siqi 3036390190
--
+- Huang Zixuan 3036100832
 -
 -
 
