@@ -19,7 +19,7 @@ struct character_statue {
 //roll(number_dies)
 //input, the number of dies to roll, determined by statue of character
 //output, the number of rolling result, number of successful rolls
-int roll(bool number_dies) {
+int roll(int number_dies) {
 	int number_success = 0;
 	for (int i = 0;i < number_dies;i++) {
 		srand(static_cast<unsigned int>(time(nullptr)));
