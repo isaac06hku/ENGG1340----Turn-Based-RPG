@@ -1,11 +1,13 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef BATTLE_H
+#define BATTLE_H
 
+#include <iostream>
 #include <string>
-#include <vector>
+#include <random>
+#include <ctime>
 
-// 物品结构体
-struct Item {
+
+struct Player_item {
     std::string name;
     int speed;
     int attack;
@@ -13,25 +15,14 @@ struct Item {
     int health;
 };
 
-// 玩家物品结构体
-struct Player_item{
-    std::string name;
-    int speed;
-    int attack;
-    int armour;
-    int health;
-    std::vector<Item> inventory;
-    Item* equipment[3];
-};
 
-struct total_statue{
-    int total_Speed;
-    int total_Attack;
-    int total_Armour;
-    int total_Health;
-};
+int roll(int number_dies);
 
-// 打印玩家状态的函数声明
-void printPlayerStatus(const Player_item& player);
+total_statue calculating_total_statue(Player_item Player_item);
 
-#endif    
+void print_board(Player_item player, Player_item enemy, int current_health_player, int current_health_enemy);
+
+// 战斗函数声明
+bool battle(Player_item player, Player_item enemy);
+
+#endif 
