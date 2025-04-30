@@ -1,13 +1,15 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <fstream>
+#include <sstream>
 #include "battle.h"
-#include "enenmy.h"
+#include "enemy.h"
 #include "input.h"
 #include "location.h"
 #include "player.h"
-#inlcude "save_load.h"
-#inlcude "utils.h"
+#include "save_load.h"
+#include "utils.h"
 
 void displayIntro();
 void displayArt(const std::string& filename);
@@ -57,5 +59,7 @@ void displayFightBoss(){
 
 int main(){
   displayIntro();
-  battleSequence();
+  // battleSequence(); (wheres this from?)
+
+  return 0;
 }
