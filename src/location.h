@@ -27,27 +27,34 @@ class LocationManager{
     Location current_location; // Player's current location
 
     public:
-    /*
-     * @brief Validates if a move to `target` is allowed from current location.
-     * @param target Location name (e.g., "Village")
-     * @return True if movement is valid
-    */
-    bool validate_move(const std::string& target) const;
+        /*
+        * @brief 
+        * @param 
+        * @return 
+        */
+        bool set_current_location(const std::string& location_name);
 
-    /*
-     * @brief Loads locations from a pipe-delimited text file.
-     * @param filename Path to file (e.g., "locations.txt")
-     * @return True if file was successfully loaded
-    */
-    bool load_locations(const std::string& filename);
+        /*
+        * @brief Validates if a move to `target` is allowed from current location.
+        * @param target Location name (e.g., "Village")
+        * @return True if movement is valid
+        */
+        bool validate_move(const std::string& target) const;
 
-    std::string get_current_location_name() const noexcept; // Get location name for save/load
+        /*
+        * @brief Loads locations from a pipe-delimited text file.
+        * @param filename Path to file (e.g., "locations.txt")
+        * @return True if file was successfully loaded
+        */
+        bool load_locations(const std::string& filename);
+
+        std::string get_current_location_name() const noexcept; // Get location name for save/load
 
 
-    /*
-     * @brief Gets the player's current location (noexcept guaranteed).
-    */
-    Location get_current_location() const noexcept;
+        /*
+        * @brief Gets the player's current location (noexcept guaranteed).
+        */
+        Location get_current_location() const noexcept;
 
 };
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 /*
 ## Location System Usage
@@ -81,4 +82,16 @@ Location LocationManager::get_current_location() const noexcept {
 
 std::string LocationManager::get_current_location_name() const noexcept {
     return current_location.name;
+}
+
+bool LocationManager::set_current_location(const std::string& location_name) {
+    auto it = std::find_if(locations.begin(), locations.end(),
+        [&](const Location& loc) { return loc.name == location_name; });
+    
+    if (it != locations.end()) {
+        current_location = *it;
+        visited_locations.push_back(location_name); // Track visited locations
+        return true;
+    }
+    return false;
 }

@@ -42,7 +42,7 @@ bool InputHandler::validate_command(const Command& cmd, GameState state) {
     {
     using namespace std;
 
-    if (!cmd.is_valid()) {
+    if (state == GameState::INVALID || !cmd.action_is_valid()) {
         return false;
     }
 

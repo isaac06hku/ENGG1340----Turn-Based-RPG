@@ -1,28 +1,26 @@
 #ifndef BATTLE_H
 #define BATTLE_H
 
-#include <iostream>
-#include <string>
-#include <random>
-#include <ctime>
+#include "core_types.h"
+#include "player.h"
+#include <array>
 
 
-struct Player_item {
+struct BattleCharacter {
     std::string name;
-    int speed;
-    int attack;
-    int armour;
-    int health;
+    CharacterStats stats;
+    int current_hp;
+
+    BattleCharacter(const std::string& name, const CharacterStats& stats, int health)
+        : name(name), stats(stats), current_hp(health) {}
+
 };
 
+namespace BattleSystem {
+    bool run_battle(BattleCharacter& player, BattleCharacter& enemy);
+    void print_battle_status(const BattleCharacter& player, const BattleCharacter& enemy);
+}
 
-int roll(int number_dies);
-
-total_statue calculating_total_statue(Player_item Player_item);
-
-void print_board(Player_item player, Player_item enemy, int current_health_player, int current_health_enemy);
-
-// 战斗函数声明
-bool battle(Player_item player, Player_item enemy);
+BattleCharacter to_battle_character(const Player& player);
 
 #endif 

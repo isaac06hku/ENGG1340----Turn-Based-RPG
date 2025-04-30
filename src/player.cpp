@@ -1,27 +1,28 @@
 #include <iostream>
 #include "player.h"
 
-// printting player statue
-void printPlayerStatus(const Player_item& player) {
-    int totalSpeed = player.speed;
-    int totalAttack = player.attack;
-    int totalArmour = player.armour;
-    int totalHealth = player.health;
+CharacterStats Player::get_total_stats() const {
+    CharacterStats total = base_stats;
 
-    for (int i = 0; i < 3; ++i) {
-        if (player.equipment[i] != nullptr) {
-            totalSpeed += player.equipment[i]->speed;
-            totalAttack += player.equipment[i]->attack;
-            totalArmour += player.equipment[i]->armour;
-            totalHealth += player.equipment[i]->health;
+    for (const Item* item : equipment) {
+        if (item) {
+            total.speed += item->modifiers.speed;
+            total.attack += item->modifiers.attack;
+            total.armour += item->modifiers.armour;
+            total.health += item->modifiers.health;
         }
     }
 
-    std::cout << "Player name: " << player.name << std::endl;
-    std::cout << "Total speed: " << totalSpeed << std::endl;
-    std::cout << "Total attack: " << totalAttack << std::endl;
-    std::cout << "Total armour: " << totalArmour << std::endl;
-    std::cout << "Total health: " << totalHealth << std::endl;
+    return total;
 }
 
-extern Player_item player;
+// printting player statue
+void printPlayerStatus(const Player& player) {
+    CharacterStats total = player.get_total_stats();
+
+    std::cout << "Player name: " << player.name << std::endl;
+    std::cout << "Total speed: " << total.speed << std::endl;
+    std::cout << "Total attack: " << total.attack << std::endl;
+    std::cout << "Total armour: " << total.armour << std::endl;
+    std::cout << "Total health: " << total.health << std::endl;
+}

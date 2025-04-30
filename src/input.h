@@ -8,7 +8,7 @@ enum class GameState { INVALID, EXPLORATION, COMBAT, DIALOGUE };
 struct Command {
     std::string action;  // "go", "attack", "use"
     std::string target;  // "Forest", "Potion"
-    bool is_valid() const { return !action.empty(); }
+    bool action_is_valid() const { return !action.empty(); }
 };
 
 class InputHandler {
