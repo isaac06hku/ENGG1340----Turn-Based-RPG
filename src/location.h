@@ -17,7 +17,7 @@ struct Location{
     bool has_encounter; /// Can lead to a fight if true
 
 };
-
+    
 //Manages game locations and movement validation.
 class LocationManager{
     private:
