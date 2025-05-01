@@ -1,8 +1,8 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
-#include "player.h"
 #include "battle.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -17,32 +17,57 @@ namespace {
 
 
 bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
+    vector<string> attacks = {
+        CombatText::ATTACK1,
+        CombatText::ATTACK2,
+        CombatText::ATTACK3
+    };
+
     // Determine turn order
+    std::cout << "\n";
+    scrollText("\n" + enemy.name + "appears!", 100);
+
     bool player_first = (player.stats.speed >= enemy.stats.speed);
     
-    auto take_turn = [](BattleCharacter& attacker, BattleCharacter& defender) {
+    auto take_turn = [&attacks](BattleCharacter& attacker, BattleCharacter& defender) {
         int damage = roll_successes(
             std::max(1, attacker.stats.attack - defender.stats.armour)
         );
+
+
         defender.current_hp -= damage;
+
+        if (attacker.name == "Player") {
+            int randomIndex = randint(0, 2);
+            scrollText(attacks[randomIndex], 100);
+        }
+
         return damage;
     };
 
     // First turn
     if (player_first) {
+        int randomIndex = randint(0, 2);
+        scrollText(attacks[randomIndex], 100);
         int damage = take_turn(player, enemy);
         if (enemy.current_hp <= 0) return true;
+        scrollText(enemy.name + "took" + to_string(damage) + "damage!", 100);
+
     } else {
         int damage = take_turn(enemy, player);
         if (player.current_hp <= 0) return false;
+        scrollText("You took" + to_string(damage) + "damage!", 100);
     }
 
     // Subsequent turns
     while (true) {
+        int randomIndex = randint(0, 2); 
         int damage = take_turn(player, enemy);
+        scrollText(enemy.name + "took" + to_string(damage) + "damage!", 100);
         if (enemy.current_hp <= 0) return true;
         
         damage = take_turn(enemy, player);
+        scrollText("You took" + to_string(damage) + "damage!", 100);
         if (player.current_hp <= 0) return false;
     }
 }
@@ -55,4 +80,13 @@ void BattleSystem::print_battle_status(const BattleCharacter& player, const Batt
               << enemy.name << ":\n"
               << "  Health: " << enemy.current_hp << "/" << enemy.stats.health << "\n"
               << "  Attack: " << enemy.stats.attack << std::endl;
+}
+
+BattleCharacter to_battle_character(const Player& player) {
+    CharacterStats total = player.get_total_stats();
+    return BattleCharacter(
+        player.name,
+        total,
+        total.health
+    );
 }
