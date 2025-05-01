@@ -8,4 +8,5 @@ void scrollText(const std::string& text, int delayMs);
 void scrollLines(const std::string& lines_file, int delayMs);
 void displayArt(const std::string& filename);
 void clearBottomScreen();
+int randint(int min, int max);
 #endif

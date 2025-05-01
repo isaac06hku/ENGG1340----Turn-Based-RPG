@@ -52,11 +52,13 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
         int damage = take_turn(player, enemy);
         if (enemy.current_hp <= 0) return true;
         scrollText(enemy.name + "took" + to_string(damage) + "damage!", 100);
+        print_battle_status(player, enemy);
 
     } else {
         int damage = take_turn(enemy, player);
         if (player.current_hp <= 0) return false;
         scrollText("You took" + to_string(damage) + "damage!", 100);
+        print_battle_status(player, enemy);
     }
 
     // Subsequent turns
@@ -69,6 +71,8 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
         damage = take_turn(enemy, player);
         scrollText("You took" + to_string(damage) + "damage!", 100);
         if (player.current_hp <= 0) return false;
+
+        print_battle_status(player, enemy);
     }
 }
 

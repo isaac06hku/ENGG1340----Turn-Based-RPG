@@ -5,6 +5,12 @@
 #include "player.h"
 #include <array>
 
+namespace CombatText {
+    const std::string ATTACK1 = "You strike with all your might!";
+    const std::string ATTACK2 = "You swing your blade with precision!";
+    const std::string ATTACK3 = "You seize the opening and attack!";
+}
+
 
 struct BattleCharacter {
     std::string name;
