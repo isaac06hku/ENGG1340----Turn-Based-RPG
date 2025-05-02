@@ -8,7 +8,7 @@
 #include <thread>
 
 void scrollText(const std::string& text, int delayMs) {
-    if (delayMs < 100) delayMs = 100;
+    if (delayMs < 50) delayMs = 50;
 
     int length = text.length();
     for (int i = 1; i <= length; ++i) { // Incremental reveal
@@ -35,7 +35,7 @@ void scrollLines(const std::string& lines_file, int delayMs) {
 
     while(std::getline(file, line)) {
         if (!line.empty()) {
-            scrollText(line, 100);
+            scrollText(line, 50);
         }
         else {
             std::cout << line << std::endl;

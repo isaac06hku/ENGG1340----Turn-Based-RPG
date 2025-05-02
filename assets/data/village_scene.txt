@@ -5,10 +5,13 @@ Before you, a sign leans into the wind — not a guide, but a warning.
 
 [Change difficulties]
 The old sign writes <Choose Your Trial>:
+
 A Mysterious Voice, deep and unearthly, speaks:
+
 "Before you lie a path of choices.
 Choose not with fear... but with the weight of your will."
 On the Sign, words appears and glowing faintly:
+
 Wanderer (normal): "Fair fight. Trouble ahead, but you can handle it."
 Seeker (hard): "Harder hits, tougher enemies. Stay sharp."
 Doom Strider (difficult): "No second chances. No mercy."

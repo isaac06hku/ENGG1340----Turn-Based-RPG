@@ -25,7 +25,7 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
 
     // Determine turn order
     std::cout << "\n";
-    scrollText(enemy.name + " appears!", 100);
+    scrollText(enemy.name + " appears!", 50);
 
     bool player_first = (player.stats.speed >= enemy.stats.speed);
     
@@ -39,10 +39,10 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
 
         if (attacker.name == "Player") {
             int randomIndex = randint(0, 2);
-            scrollText(attacks[randomIndex], 100);
-            scrollText(defender.name + " took " + to_string(damage) + " damage!", 100);
+            scrollText(attacks[randomIndex], 50);
+            scrollText(defender.name + " took " + to_string(damage) + " damage!", 50);
         } else {
-            scrollText("You took " + to_string(damage) + " damage!", 100);
+            scrollText("You took " + to_string(damage) + " damage!", 50);
         }
 
         std::cout << "\n";
@@ -51,11 +51,9 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
 
     // First turn
     if (player_first) {
-        int randomIndex = randint(0, 2);
-        scrollText(attacks[randomIndex], 100);
         int damage = take_turn(player, enemy);
         if (enemy.current_hp <= 0) return true;
-        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 100);
+        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         print_battle_status(player, enemy);
         std::cout << "\n";
@@ -63,7 +61,7 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     } else {
         int damage = take_turn(enemy, player);
         if (player.current_hp <= 0) return false;
-        scrollText("You took " + to_string(damage) + " damage!", 100);
+        scrollText("You took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         print_battle_status(player, enemy);
         std::cout << "\n";
@@ -73,12 +71,12 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     while (true) {
         int randomIndex = randint(0, 2); 
         int damage = take_turn(player, enemy);
-        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 100);
+        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         if (enemy.current_hp <= 0) return true;
         
         damage = take_turn(enemy, player);
-        scrollText("You took " + to_string(damage) + " damage!", 100);
+        scrollText("You took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         if (player.current_hp <= 0) return false;
 

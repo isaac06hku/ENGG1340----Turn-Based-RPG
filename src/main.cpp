@@ -7,7 +7,7 @@
 #include <sstream>
 #include <limits>
 #include <string>
-#include "core_types.h"lea
+#include "core_types.h"
 #include "battle.h"
 #include "enemy.h"
 #include "input.h"
@@ -36,19 +36,23 @@ int difficultySelection() {
   switch (difficulty)
     {
       case 1:
-      scrollText("You choose the gentle breath of the world. But remember — even soft winds carry unseen dangers.", 100);
+      scrollText("You choose the gentle breath of the world. But remember — even soft winds carry unseen dangers.", 50
+      );
       break;
 
       case 2:
-      scrollText("You step into the heart of the storm, daring the world to test you.", 100);
+      scrollText("You step into the heart of the storm, daring the world to test you.", 50
+      );
       break;
 
       case 3:
-      scrollText("You embrace the tempest. No safety. No forgiveness. Only strength... or oblivion.", 100);
+      scrollText("You embrace the tempest. No safety. No forgiveness. Only strength... or oblivion.", 50
+      );
       break;
 
       default:
-      scrollText("Unexpected error. If you're seeing this in-game, something is very wrong.", 100);
+      scrollText("Unexpected error. If you're seeing this in-game, something is very wrong.", 50
+      );
     }
 
     return difficulty;
@@ -57,7 +61,8 @@ int difficultySelection() {
 
 void displayIntro(){
   std::string file = "assets/data/intro.txt";
-  scrollLines(file, 100);
+  scrollLines(file, 50
+  );
 }
 
 void displayFightTungTungTung(BattleCharacter player, BattleCharacter enemy) {
@@ -65,11 +70,13 @@ void displayFightTungTungTung(BattleCharacter player, BattleCharacter enemy) {
   displayArt("assets/ascii_art/enemy_art/tung_tung_tung_sahur.txt");
   while (true) {
     if (BattleSystem::run_battle(player, enemy)) {
-      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+      scrollLines("assets/data/fights/tung_tung_win.txt", 50
+      );
       break;
 
     } else {
-      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+      scrollLines("assets/data/fights/tung_tung_win.txt", 50
+      );
     }
 }
 }
@@ -79,11 +86,13 @@ void displayFightTralala(BattleCharacter player, BattleCharacter enemy){
   displayArt("assets/ascii_art/enemy_art/tralalelo_tralala.txt");
   while (true) {
     if (BattleSystem::run_battle(player, enemy)) {
-      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+      scrollLines("assets/data/fights/tralalelo_win.txt", 50
+      );
       break;
 
     } else {
-      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+      scrollLines("assets/data/fights/tralalelo_lose.txt", 50
+      );
     }
 }
 }
@@ -93,11 +102,13 @@ void displayFightBoss(BattleCharacter player, BattleCharacter enemy){
   displayArt("assets/ascii_art/enemy_art/bombardino_crocodilo.txt");
   while (true) {
     if (BattleSystem::run_battle(player, enemy)) {
-      scrollLines("assets/data/fights/bombardino_win.txt", 100);
+      scrollLines("assets/data/fights/bombardino_win.txt", 50
+      );
       break;
 
     } else {
-      scrollLines("assets/data/fights/bombardino_lose.txt", 100);
+      scrollLines("assets/data/fights/bombardino_lose.txt", 50
+      );
     }
 }
 }
@@ -110,10 +121,11 @@ int main(){
   clearBottomScreen();
 
   displayArt("assets/ascii_art/location_art/village_art.txt");
-  scrollLines("assets/data/village_scene.txt", 100);
+  scrollLines("assets/data/village_scene.txt", 50
+  );
 
   int difficulty = difficultySelection();
-  int multiplier = difficulty * 0.5;
+  int multiplier = difficulty * 0.4;
 
   BattleCharacter tung_tung_tung_sahur {
     "Tung Tung Tung Sahur", 
@@ -125,30 +137,35 @@ int main(){
     multiplier * 30};
 
   BattleCharacter bombardino_crocodilo {"Bombardino Crocodilo", 
-    {multiplier * 11, multiplier * 11, multiplier * 13, multiplier * 35}, 
+    {multiplier * 8, multiplier * 8, multiplier * 8, multiplier * 35}, 
     multiplier * 35};
 
   displayArt("assets/ascii_art/enemy_art/tung_tung_tung_sahur.txt");
-  scrollLines("assets/data/tung_tung_scene.txt", 100);
+  scrollLines("assets/data/tung_tung_scene.txt", 50
+  );
   clearBottomScreen();
   displayFightTungTungTung(player, tung_tung_tung_sahur);
 
   displayArt("assets/ascii_art/location_art/forest_art.txt");
-  scrollLines("assets/data/forest_scene.txt", 100);
+  scrollLines("assets/data/forest_scene.txt", 50
+  );
   
   displayArt("assets/ascii_art/location_art/beach_art.txt");
-  scrollLines("assets/data/tralalelo_scene.txt", 100);
+  scrollLines("assets/data/tralalelo_scene.txt", 50
+  );
   displayFightTralala(player, tralalelo_tralala);
   
   displayArt("assets/ascii_art/location_art/castle_art.txt");
-  scrollLines("assets/data/castle_scene.txt", 100);
+  scrollLines("assets/data/castle_scene.txt", 50
+  );
 
-  scrollLines("assets/data/castle_scene.txt", 100);
-  scrollLines("assets/data/bombardino_scene.txt", 100);
+  scrollLines("assets/data/bombardino_scene.txt", 50
+  );
   displayFightBoss(player, bombardino_crocodilo);
 
-  scrollLines("assets/data/ending.txt", 100);
-  displayArt("assets/ascii_art/Rick_ still image");
+  scrollLines("assets/data/ending.txt", 50
+  );
+  displayArt("assets/ascii_art/Rick_ still image.txt");
 
   return 0;
 }
