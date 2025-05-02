@@ -7,7 +7,7 @@
 #include <sstream>
 #include <limits>
 #include <string>
-#include "core_types.h"
+#include "core_types.h"lea
 #include "battle.h"
 #include "enemy.h"
 #include "input.h"
@@ -74,32 +74,59 @@ void displayFightTungTungTung(BattleCharacter player, BattleCharacter enemy) {
 }
 }
 
-void displayFightTralala(){
-  std::cout << "Fighting Tralalelo!" << std::endl;
+void displayFightTralala(BattleCharacter player, BattleCharacter enemy){
+  clearBottomScreen();
   displayArt("assets/ascii_art/enemy_art/tralalelo_tralala.txt");
+  while (true) {
+    if (BattleSystem::run_battle(player, enemy)) {
+      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+      break;
+
+    } else {
+      scrollLines("assets/data/fights/tung_tung_win.txt", 100);
+    }
+}
 }
 
-void displayFightBoss(){
-  std::cout << "Final Boss Fight: Bombardino Crocodile!" << std::endl;
+void displayFightBoss(BattleCharacter player, BattleCharacter enemy){
+  clearBottomScreen();
   displayArt("assets/ascii_art/enemy_art/bombardino_crocodilo.txt");
+  while (true) {
+    if (BattleSystem::run_battle(player, enemy)) {
+      scrollLines("assets/data/fights/bombardino_win.txt", 100);
+      break;
+
+    } else {
+      scrollLines("assets/data/fights/bombardino_lose.txt", 100);
+    }
+}
 }
 
 
 int main(){
-  BattleCharacter player {"Player", {10, 10, 10, 50}, 100};
-  BattleCharacter tung_tung_tung_sahur {"Tung Tung Tung Sahur", {4, 7, 2, 20}, 30};
-  BattleCharacter tralalelo_tralala {"Tralalelo Tralala", {5, 8, 3, 30}, 40};
-  BattleCharacter bombardino_crocodilo {"Bombardino Crocodilo", {11, 11, 13, 45}, 60};
-
+  BattleCharacter player {"Player", {10, 10, 10, 50}, 50};
 
   displayIntro();
   clearBottomScreen();
 
   displayArt("assets/ascii_art/location_art/village_art.txt");
   scrollLines("assets/data/village_scene.txt", 100);
-  clearBottomScreen();
 
   int difficulty = difficultySelection();
+  int multiplier = difficulty * 0.5;
+
+  BattleCharacter tung_tung_tung_sahur {
+    "Tung Tung Tung Sahur", 
+    {multiplier * 4, multiplier * 7, multiplier * 2, multiplier * 20}, 
+    multiplier * 20};
+
+  BattleCharacter tralalelo_tralala {"Tralalelo Tralala", 
+    {multiplier * 5, multiplier * 8, multiplier * 3, multiplier * 30}, 
+    multiplier * 30};
+
+  BattleCharacter bombardino_crocodilo {"Bombardino Crocodilo", 
+    {multiplier * 11, multiplier * 11, multiplier * 13, multiplier * 35}, 
+    multiplier * 35};
 
   displayArt("assets/ascii_art/enemy_art/tung_tung_tung_sahur.txt");
   scrollLines("assets/data/tung_tung_scene.txt", 100);
@@ -109,7 +136,19 @@ int main(){
   displayArt("assets/ascii_art/location_art/forest_art.txt");
   scrollLines("assets/data/forest_scene.txt", 100);
   
+  displayArt("assets/ascii_art/location_art/beach_art.txt");
+  scrollLines("assets/data/tralalelo_scene.txt", 100);
+  displayFightTralala(player, tralalelo_tralala);
   
+  displayArt("assets/ascii_art/location_art/castle_art.txt");
+  scrollLines("assets/data/castle_scene.txt", 100);
+
+  scrollLines("assets/data/castle_scene.txt", 100);
+  scrollLines("assets/data/bombardino_scene.txt", 100);
+  displayFightBoss(player, bombardino_crocodilo);
+
+  scrollLines("assets/data/ending.txt", 100);
+  displayArt("assets/ascii_art/Rick_ still image");
 
   return 0;
 }
