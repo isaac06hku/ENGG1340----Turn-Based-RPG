@@ -53,7 +53,6 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     if (player_first) {
         int damage = take_turn(player, enemy);
         if (enemy.current_hp <= 0) return true;
-        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         print_battle_status(player, enemy);
         std::cout << "\n";
@@ -61,7 +60,6 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     } else {
         int damage = take_turn(enemy, player);
         if (player.current_hp <= 0) return false;
-        scrollText("You took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         print_battle_status(player, enemy);
         std::cout << "\n";
@@ -70,12 +68,10 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     // Subsequent turns
     while (true) {
         int damage = take_turn(player, enemy);
-        scrollText(enemy.name + " took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         if (enemy.current_hp <= 0) return true;
         
         damage = take_turn(enemy, player);
-        scrollText("You took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";
         if (player.current_hp <= 0) return false;
 

@@ -122,7 +122,7 @@ int main(){
   );
 
   int difficulty = difficultySelection();
-  int multiplier = difficulty * 0.5;
+  int multiplier = difficulty * 0.48;
 
   BattleCharacter tung_tung_tung_sahur {
     "Tung Tung Tung Sahur", 
@@ -130,11 +130,11 @@ int main(){
     multiplier * 30};
 
   BattleCharacter tralalelo_tralala {"Tralalelo Tralala", 
-    {multiplier * 5, multiplier * 8, multiplier * 3, multiplier * 40}, 
+    {multiplier * 5, multiplier * 8, multiplier * 3, multiplier * 35}, 
     multiplier * 40};
 
   BattleCharacter bombardino_crocodilo {"Bombardino Crocodilo", 
-    {multiplier * 8, multiplier * 8, multiplier * 8, multiplier * 45}, 
+    {multiplier * 8, multiplier * 8, multiplier * 8, multiplier * 40}, 
     multiplier * 45};
 
   displayArt("assets/ascii_art/enemy_art/tung_tung_tung_sahur.txt");
