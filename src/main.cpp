@@ -58,8 +58,21 @@ int difficultySelection() {
 
 void displayIntro(){
   std::string file = "assets/data/intro.txt";
-  scrollLines(file, 50
-  );
+  std::cout << "===================================================";
+  std::cout << "  ____            _                   _            ";
+  std::cout << " |  _ \          (_)                 | |           ";
+  std::cout << " | |_) |_ __ __ _ _ _ __    _ __ ___ | |_          ";
+  std::cout << " |  _ <| '__/ _` | | '_ \  | '__/ _ \| __|         ";
+  std::cout << " | |_) | | | (_| | | | | | | | | (_) | |_          ";
+  std::cout << " |____/|_|  \__,_|_|_| |_| |_|  \___/ \__|         ";
+  std::cout << "     /\      | |               | |                 ";
+  std::cout << "    /  \   __| |_   _____ _ __ | |_ _   _ _ __ ___ ";
+  std::cout << "   / /\ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \";
+  std::cout << "  / ____ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/";
+  std::cout << " /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|";
+  std::cout << "                                                   ";
+  std::cout << "===================================================";
+  scrollLines(file, 50);
 }
 
 void displayFightTungTungTung(BattleCharacter player, BattleCharacter enemy) {
