@@ -69,7 +69,6 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
 
     // Subsequent turns
     while (true) {
-        int randomIndex = randint(0, 2); 
         int damage = take_turn(player, enemy);
         scrollText(enemy.name + " took " + to_string(damage) + " damage!", 50);
         std::cout << "\n";

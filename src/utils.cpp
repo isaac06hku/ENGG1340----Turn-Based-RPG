@@ -35,7 +35,7 @@ void scrollLines(const std::string& lines_file, int delayMs) {
 
     while(std::getline(file, line)) {
         if (!line.empty()) {
-            scrollText(line, 50);
+            scrollText(line, delayMs);
         }
         else {
             std::cout << line << std::endl;
