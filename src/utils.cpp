@@ -3,7 +3,6 @@
 #include <fstream>
 #include <string>
 #include <random>
-#include <conio.h>
 #include <chrono>
 #include <thread>
 
@@ -20,7 +19,7 @@ void scrollText(const std::string& text, int delayMs) {
         std::this_thread::sleep_for(std::chrono::milliseconds(delayMs)); // Delay
     }
 
-    getch();
+    std::cin.get();
     putchar('\n'); // Move to the next line after scrolling
 }
 
