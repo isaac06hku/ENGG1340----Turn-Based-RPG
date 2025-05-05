@@ -1,9 +1,18 @@
+# Compiler
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
-SRC = src/main.cpp src/battle.cpp src/enemy.cpp src/input.cpp src/location.cpp src/player.cpp src/save_load.cpp src/utils.cpp
+CXXFLAGS = -Wall -Wextra -std=c++11
+
+# Source and Header files
+SRC = src/main.cpp src/battle.cpp src/player.cpp src/utils.cpp
+HEADERS = src/battle.h src/player.h src/core_types.h src/utils.h
+
+# Output executable
 OUT = game
 
-all: $(SRC)
+# Build rules
+all: $(OUT)
+
+$(OUT): $(SRC) $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $(OUT) $(SRC)
 
 clean:

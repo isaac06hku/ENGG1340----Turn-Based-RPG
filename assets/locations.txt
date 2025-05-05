@@ -1,5 +1,0 @@
-/[Name]|[Description]|[Connections (reachable locations)]|assets/[txt file]|[has encounter]
-Village|The silence is deafening...|Forest|assets/ascii_art/location_art/village_art.txt|true
-Forest|A dense woodland...|Village|assets/ascii_art/location_art/forest_art.txt|true
-Beach|Wind-blown coastline, foaming waves clawing at the shore...|Forest,Village|assets/ascii_art/location_art/beach_art.txt|true
-Castle|A crumbling fortress...||assets/ascii_art/location_art/castle_art.txt|true

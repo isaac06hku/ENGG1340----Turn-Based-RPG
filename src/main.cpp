@@ -9,9 +9,6 @@
 #include <string>
 #include "core_types.h"
 #include "battle.h"
-#include "enemy.h"
-#include "input.h"
-#include "location.h"
 #include "player.h"
 #include "utils.h"
 
