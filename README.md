@@ -18,6 +18,6 @@ The player will go through the story and discover the truth behind the mystery.
 # Non-standard libaries:
 
 # Compilation instructions:
-Step 1. use `make` command
-Step 2. compile the programme with `./game` command
-Step 3. Enjoy ;)
+- Step 1. use `make` command
+- Step 2. compile the programme with `./game` command
+- Step 3. Enjoy ;)
