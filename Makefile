@@ -14,6 +14,6 @@ all: $(OUT)
 
 $(OUT): $(SRC) $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $(OUT) $(SRC)
-
+# remove the files
 clean:
 	rm -f $(OUT)
