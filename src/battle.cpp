@@ -15,7 +15,7 @@ namespace {
 	}
 }
 
-
+//battle system that randomly initiate the battle 
 bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
     vector<string> attacks = {
         CombatText::ATTACK1,
@@ -25,18 +25,19 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
 
     // Determine turn order
     std::cout << "\n";
+    // output enemy counter message
     scrollText(enemy.name + " appears!", 50);
-
+    //determine who acts first by speed
     bool player_first = (player.stats.speed >= enemy.stats.speed);
-    
+    //minus hp by damage if roll successful
     auto take_turn = [&attacks](BattleCharacter& attacker, BattleCharacter& defender) {
         int damage = roll_successes(
             std::max(1, attacker.stats.attack - defender.stats.armour)
         );
 
-
+	
         defender.current_hp -= damage;
-
+	//output the damage message
         if (attacker.name == "Player") {
             int randomIndex = randint(0, 2);
             scrollText(attacks[randomIndex], 50);
@@ -49,7 +50,7 @@ bool BattleSystem::run_battle(BattleCharacter& player, BattleCharacter& enemy) {
         return damage;
     };
 
-    // First turn
+    // If player are the First to move
     if (player_first) {
         int damage = take_turn(player, enemy);
         if (enemy.current_hp <= 0) return true;
